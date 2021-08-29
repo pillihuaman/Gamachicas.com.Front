@@ -1,0 +1,47 @@
+.flex-container {
+  display: flex;
+  background-color: rgb(74, 119, 216);
+  width: auto;
+  color: white;
+  border: solid 2px red;
+  padding: 30px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  align-content: stretch;
+  margin: 12px;
+
+}
+
+.flex-container div {
+  border: red;
+  font-size: 12px;
+  padding: 20px;
+  border: solid 2px;
+  margin: 2px;
+
+}
+
+.main {
+  background-color: brown;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  min-width: 1vw;
+  width: 10vw;
+  text-align: center;
+
+}
+
+.submain {
+  color: chartreuse;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  border-radius: 2vw;
+}
+
+.newtheme {
+
+  color: darkgray;
+  font-size: 12vw;
+
+}

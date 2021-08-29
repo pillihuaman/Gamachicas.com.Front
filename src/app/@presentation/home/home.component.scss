@@ -1,0 +1,32 @@
+@import '../../../themes';
+
+@include nb-install-component {
+
+  background-color: nb-theme(background-basic-color-2);
+
+}
+
+/*
+.headercustom {
+  flex-direction: row;
+  align-items: flex-end !important;
+  display: flex !important;
+  align-content: flex-start !important;
+  justify-content: flex-end !important;
+}
+
+nb-layout {
+  width: 100%;
+  height: 100%;
+}
+
+nb-layout-column:first-child {
+  flex: 0.2 !important;
+
+}
+
+nb-layout-column:last-child {
+  flex: 2 !important;
+
+}
+*/

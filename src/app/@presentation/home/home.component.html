@@ -1,0 +1,11 @@
+<nb-layout>
+  <nb-layout-header fixed>
+    <app-serv-pillihuaman-header-home></app-serv-pillihuaman-header-home>
+  </nb-layout-header>
+  <nb-sidebar tag="menu-barapp" state="expanded">
+    <serv-pillihuaman-sidebar-home></serv-pillihuaman-sidebar-home>
+  </nb-sidebar>
+  <nb-layout-column class="colored-column-basic" (click)="toggle()">
+    <router-outlet></router-outlet>
+  </nb-layout-column>
+</nb-layout>
