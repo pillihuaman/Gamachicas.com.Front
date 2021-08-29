@@ -51,22 +51,6 @@ export class ServPillihuamanHeaderHomeComponent implements OnInit {
     this.sidebarService.toggle(true, 'menu-barapp');
     console.log(this.layoutService.getDimensions());
     return false;
-
-
-
-    /*
-        if (this.contadoTaggle % 2 == 0) {
-          this.sidebarService.expand();
-        } {
-          this.sidebarService.collapse()
-        }
-        this.contadoTaggle++;
-    
-        console.log(this.sidebarService.getSidebarState());
-        console.log(this.sidebarService.getSidebarResponsiveState());
-    
-    
-        return false;*/
   }
 
 }

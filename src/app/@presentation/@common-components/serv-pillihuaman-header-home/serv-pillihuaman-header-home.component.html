@@ -7,4 +7,12 @@
   <nb-action icon="home-outline"></nb-action>
   <nb-action icon="search-outline"></nb-action>
   <nb-action icon="edit-outline"></nb-action>
+  <nb-action>
+    <nb-select placeholder="Select theme" (selectedChange)="ChangeThemes($event)">
+      <nb-option *ngFor="let item of listThemes" value="{{item.description}}">{{item.description}}</nb-option>
+    </nb-select>
+    <span class="material-icons">
+      palette
+    </span>
+  </nb-action>
 </nb-actions>
