@@ -1,22 +1,48 @@
-<div class="flex-container">
-  <div>
-    <h1>Register new User</h1>
-  </div>
-  <div>
-    <div class="container">
-      <div class="row">
-        <article class="col-md-6">
-          <p>texto centrado</p>
-          <button class="btn btn-primary">Enviar</button>
-        </article>
-        <section class="col-md-2"> Contenio seccion</section>
-        <p class="col-md-4"> derivado fjdflkasjdflkasdjflkadjsflkasjflkasjf
-          fakjsldjfalksjflsajfalsjflkadsjflaksjflkasdjf </p>
-      </div>
+<h1>User/Register</h1>
+<hr>
+<form novalidate [formGroup]="form">
+  <div class="flex-container">
+    <div class="form-group">
+      <label for="name">Name *</label>
+      <input type="text" nbInput status="primary" placeholder="Name" class="form-control" formControlName="name">
     </div>
-    <div class="container">
-      modulo
+    <div class="form-group">
+      <label for="lastName">Last Name *</label>
+      <input type="text" nbInput status="primary" placeholder="Last Name" class="form-control"
+        formControlName="lastName">
     </div>
-  </div>
 
-</div>
+    <div class="form-group">
+      <label for="secondLastName">Second Last Name *</label>
+      <input fullWidth fieldSize="medium" type="text" nbInput status="primary" placeholder="Second Last Name"
+        class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="age">Age</label>
+      <input type="text" nbInput status="primary" placeholder="Age" class="form-control">
+    </div>
+    <div class="form-group col-2">
+      <label for="sex">Sex *</label>
+
+      <mat-form-field aria-label="Default" appearance="fill">
+        <mat-label>Caracter</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Number" matInput [formControl]="myControl"
+          [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+    </div>
+  </div>
+  <div class="buttoncontrol">
+    <div>
+      <button type="submit" class="btn btn-primary btn-lg">Save</button>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary btn-lg">Clear</button>
+    </div>
+  </div>
+</form>

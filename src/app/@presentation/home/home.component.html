@@ -1,6 +1,9 @@
-<nb-layout>
+<nb-layout windowMode>
   <nb-layout-header fixed>
-    <app-serv-pillihuaman-header-home></app-serv-pillihuaman-header-home>
+    <a href="#" (click)="toggle()" class="content"><span class="material-icons">
+        format_list_bulleted
+      </span></a>
+    <app-serv-pillihuaman-header-home class="mainrdHeader"></app-serv-pillihuaman-header-home>
   </nb-layout-header>
   <nb-sidebar tag="menu-barapp" state="expanded">
     <serv-pillihuaman-sidebar-home></serv-pillihuaman-sidebar-home>

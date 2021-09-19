@@ -27,10 +27,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
-
-
-
-
 import { ServPillihuamanHeaderHomeComponent } from './serv-pillihuaman-header-home/serv-pillihuaman-header-home.component';
 import { ServPillihuamanSidebarHomeComponent } from './serv-pillihuaman-sidebar-home/serv-pillihuaman-sidebar-home.component';
 import { ServPillihuamanLeftMenuComponent } from './serv-pillihuaman-left-menu/serv-pillihuaman-left-menu.component'
@@ -64,7 +60,6 @@ const materialModules = [
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
-    MatIconModule,
     MatButtonModule,
     NbFormFieldModule,
     NbInputModule,
@@ -80,7 +75,7 @@ const materialModules = [
     NbMenuModule,
     MatMenuModule,
     ...materialModules,
-    NbContextMenuModule
+    NbContextMenuModule, MatIconModule
   ],
   exports: [...COMPONENTS,
   ...materialModules],

@@ -1,18 +1,12 @@
-<nb-actions>
-  <nb-action>
-    <a href="#" (click)="toggle()"><span class="material-icons">
-        format_list_bulleted
-      </span></a>
-  </nb-action>
-  <nb-action icon="home-outline"></nb-action>
-  <nb-action icon="search-outline"></nb-action>
-  <nb-action icon="edit-outline"></nb-action>
-  <nb-action>
-    <nb-select placeholder="Select theme" (selectedChange)="ChangeThemes($event)">
-      <nb-option *ngFor="let item of listThemes" value="{{item.description}}">{{item.description}}</nb-option>
-    </nb-select>
-    <span class="material-icons">
-      palette
-    </span>
-  </nb-action>
-</nb-actions>
+<mat-icon style="padding-left: 15px;">home</mat-icon>
+
+
+
+
+<mat-icon style="padding-left: 15px;">logout</mat-icon>
+
+
+
+<nb-select placeholder="Select theme" (selectedChange)="ChangeThemes($event)" style="padding-left: 15px;">
+  <nb-option *ngFor="let item of listThemes" value="{{item.description}}">{{item.description}}</nb-option>
+</nb-select>
