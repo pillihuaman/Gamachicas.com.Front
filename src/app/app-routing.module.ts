@@ -10,6 +10,13 @@ const routes: Routes = [
     //canActivate: [NotauthGuard],
     //canLoad: [NotauthGuard]
 
+  },
+  {
+    path: 'corporation',
+    loadChildren: () => import('../app/corporations/corporations.module').then((m) => m.CorporationsModule),
+    //canActivate: [NotauthGuard],
+    //canLoad: [NotauthGuard]
+
   }
 
 ];

@@ -25,9 +25,14 @@ import {
 import { CommonComponentModule } from './@presentation/@common-components/common-component.module';
 import { HomeModule } from './@presentation/home/home.module'
 import { MatIconModule } from '@angular/material/icon';
+import { EmpresaComponent } from './@presentation/pages/empresa/empresa.component';
+import { PageModule } from './@presentation/pages/page.module';
+import { CorporationsComponent } from './corporations/corporations.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmpresaComponent,
+    CorporationsComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,7 @@ import { MatIconModule } from '@angular/material/icon';
     NbWindowModule.forRoot(),
     NbButtonModule,
     NbInputModule,
-    CommonComponentModule, MatAutocompleteModule, MatSelectModule, MatFormFieldModule, HomeModule, MatIconModule
+    CommonComponentModule, MatAutocompleteModule, MatSelectModule, MatFormFieldModule, HomeModule, MatIconModule, PageModule
 
   ],
   providers: [],

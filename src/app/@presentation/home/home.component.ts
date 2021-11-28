@@ -18,9 +18,14 @@ export class HomeComponent implements OnInit {
 
   }
 
-  toggle() {
-    this.sidebarService.collapse('menu-barapp');
+
+  toggle(): boolean {
+    this.sidebarService.toggle(true, 'menu-barapp');
     return false;
+  }
+
+  toggleout() {
+    this.sidebarService.collapse('menu-barapp');
 
   }
 

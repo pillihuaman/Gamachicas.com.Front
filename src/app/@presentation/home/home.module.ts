@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
@@ -32,6 +32,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { HomeAppComponent } from './home-app/home-app.component';
+import { ProductsComponent } from './products/products.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,9 @@ import { HomeAppComponent } from './home-app/home-app.component';
     UserRegisterComponent,
     LoginComponent,
     HomeAppComponent,
+    ProductsComponent,
+    ProductDetailComponent
+
   ],
   imports: [
     CommonModule,
@@ -61,6 +66,7 @@ import { HomeAppComponent } from './home-app/home-app.component';
     CommonComponentModule,
     FormsModule,
     ReactiveFormsModule, MatInputModule, MatSelectModule, MatFormFieldModule, MatAutocompleteModule
-  ]
+  ],
+
 })
 export class HomeModule { }

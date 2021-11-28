@@ -1,0 +1,44 @@
+<span *ngIf="this.configPageControl != undefined">
+        <span *ngIf="this.configPageControl != null">
+            <!-- <button pRipple pButton icon="{{this.icon}}" class="{{this.class}}"
+                id="{{this.configPageControl.idControl}}" name="{{this.configPageControl.nameControl}}"
+                type="{{this.configPageControl.typeControl}}" style="{{this.style}}">
+            </button>
+            <span *ngIf="this.pbutton==true">
+                <button pButton class="{{this.class}}" style="{{this.style}}" id="{{this.configPageControl.idControl}}"
+                    name="{{this.configPageControl.nameControl}}" type="{{this.configPageControl.typeControl}}">
+                    <span>
+                        {{this.configPageControl.labelControl}}
+                    </span>
+                </button>
+            </span>-->
+
+            <span *ngIf="this.icon">
+                <button pRipple pButton icon="{{this.icon}}" class="{{this.class}}"
+                        id="{{this.configPageControl.idControl}}" name="{{this.configPageControl.nameControl}}"
+                        type="{{this.configPageControl.typeControl}}" style="{{this.style}}">
+                </button>
+            </span>
+
+            <span *ngIf="!this.icon">
+                <button *ngIf="this.pbutton==true" pButton class="{{this.class}}" style="{{this.style}}"
+                        id="{{this.configPageControl.idControl}}" name="{{this.configPageControl.nameControl}}"
+                        type="{{this.configPageControl.typeControl}}">
+                    <span>
+                        {{this.configPageControl.labelControl}}
+                    </span>
+                </button>
+            </span>
+
+
+            <span *ngIf="this.pbutton==false">
+                <button class="{{this.class}}" style="{{this.style}}" type="{{this.configPageControl.typeControl}}"
+                        id="{{this.configPageControl.idControl}}" name="{{this.configPageControl.nameControl}}">
+                    <span>
+                        {{this.configPageControl.labelControl}}
+                    </span>
+                </button>
+            </span>
+        </span>
+
+    </span>

@@ -30,6 +30,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ServPillihuamanHeaderHomeComponent } from './serv-pillihuaman-header-home/serv-pillihuaman-header-home.component';
 import { ServPillihuamanSidebarHomeComponent } from './serv-pillihuaman-sidebar-home/serv-pillihuaman-sidebar-home.component';
 import { ServPillihuamanLeftMenuComponent } from './serv-pillihuaman-left-menu/serv-pillihuaman-left-menu.component'
+import { RouterModule } from '@angular/router';
 const COMPONENTS = [
   ServPillihuamanHeaderHomeComponent,
   ServPillihuamanSidebarHomeComponent,
@@ -75,7 +76,7 @@ const materialModules = [
     NbMenuModule,
     MatMenuModule,
     ...materialModules,
-    NbContextMenuModule, MatIconModule
+    NbContextMenuModule, MatIconModule, RouterModule
   ],
   exports: [...COMPONENTS,
   ...materialModules],

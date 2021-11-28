@@ -1,26 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { NbSidebarService, NbThemeService } from '@nebular/theme';
 import { Observable, timer } from 'rxjs';
 import { User } from '../app/@data/model/User/user';
 @Component({
   selector: 'serv-pillihuaman-app',
-  template: `
-    <nb-layout>
-
-      <nb-layout-header fixed>
-      <!-- Insert header here -->
-      </nb-layout-header>
-
-      <nb-layout-column>
-    
-        <router-outlet></router-outlet>
-      
-      </nb-layout-column>
-
-      <nb-layout-footer fixed>
-      <!-- Insert footer here -->
-      </nb-layout-footer>
-
-    </nb-layout>
+  template: `<router-outlet></router-outlet>
   `,
 
 })
@@ -32,6 +16,9 @@ export class AppComponent implements OnInit {
   listaUsuario: Array<User> = [];
   everySecond$: Observable<number> = timer(0, 100);
   AppComponent() { }
+  constructor(private sidebarService: NbSidebarService, private nbthemeservice: NbThemeService,) {
+  }
+
   ngOnInit() {
     this.nombreEmpresa = "Gamachicas.com";
     this.user = { name: 'zarmir', lastName: 'pillihuaman', code: 1, estatus: false, password: '', documentoNumber: '46178209' };
@@ -40,5 +27,15 @@ export class AppComponent implements OnInit {
     if (this.cantidadUsuario !== 1) {
       this.estado = false;
     }
+  }
+
+  toggle(): boolean {
+    this.sidebarService.toggle(true, 'menu-barapp');
+    return false;
+  }
+
+  toggleout() {
+    this.sidebarService.collapse('menu-barapp');
+
   }
 }

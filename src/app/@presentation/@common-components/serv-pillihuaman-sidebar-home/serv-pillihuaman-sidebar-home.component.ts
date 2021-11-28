@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NbMenuItem } from '@nebular/theme';
+import { MatIconModule } from '@angular/material/icon';
+import { MenuLeft } from 'src/app/@data/model/general/menu-left';
 
 @Component({
   selector: 'serv-pillihuaman-sidebar-home',
@@ -8,15 +10,36 @@ import { NbMenuItem } from '@nebular/theme';
 })
 export class ServPillihuamanSidebarHomeComponent implements OnInit {
 
-  nmMenu :NbMenuItem;
-  constructor() { }
+
+
+  listMenuLeft: MenuLeft[] = [];
+  constructor() {
+
+    let menuLeft: MenuLeft = {
+      idMenu: 1,
+      description: 'Home',
+      icono: 'house',
+      iconClass: 'material-icons-outlined',
+      url: '/'
+    }
+
+    let menuLeft1: MenuLeft = {
+      idMenu: 2,
+      description: 'Video',
+      icono: 'play_circle_outline',
+      iconClass: 'material-icons-outlined',
+      url: '/user'
+    }
+    this.listMenuLeft.push(menuLeft);
+    this.listMenuLeft.push(menuLeft1);
+
+  }
 
   ngOnInit(): void {
   }
 
-  HideMenu():void
-  {
-    
+  HideMenu(): void {
+
   }
 
 }
