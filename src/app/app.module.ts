@@ -28,6 +28,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { EmpresaComponent } from './@presentation/pages/empresa/empresa.component';
 import { PageModule } from './@presentation/pages/page.module';
 import { CorporationsComponent } from './corporations/corporations.component';
+import { HttpClientModule } from '@angular/common/http';
+import { DomainModule } from './@domain/repository/domain.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,9 +51,10 @@ import { CorporationsComponent } from './corporations/corporations.component';
     NbSidebarModule.forRoot(),
     NbToastrModule.forRoot(),
     NbWindowModule.forRoot(),
+    DomainModule.forRoot(),
     NbButtonModule,
     NbInputModule,
-    CommonComponentModule, MatAutocompleteModule, MatSelectModule, MatFormFieldModule, HomeModule, MatIconModule, PageModule
+    CommonComponentModule, MatAutocompleteModule, MatSelectModule, MatFormFieldModule, HomeModule, MatIconModule, PageModule, HttpClientModule
 
   ],
   providers: [],

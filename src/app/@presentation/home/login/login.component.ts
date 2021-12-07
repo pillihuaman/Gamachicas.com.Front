@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from 'src/app/@data/service/authentication.service';
+import { UserRepository } from 'src/app/@domain/repository/User.Repository';
+
+
+//import { AuthenticationService } from 'src/app/@data/service/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +18,9 @@ export class LoginComponent implements OnInit {
     password: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(30)],],
   });
 
-  constructor(private formBuilder: FormBuilder, private autenticateService: AuthenticationService) { }
+  constructor(private formBuilder: FormBuilder, private userRepository: UserRepository) { }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void { }
 
   login() {
 
@@ -28,16 +29,16 @@ export class LoginComponent implements OnInit {
 
     this.logging = true;
 
-    this.autenticateService.login(user, passwor).subscribe(
-      (res) => {
-        this.logging = false;
-
-
-      },
-      (err) => {
-        this.logging = false;
-      }
-    );
+    /* this.autenticateService.login(user, passwor).subscribe(
+       (res) => {
+         this.logging = false;
+ 
+ 
+       },
+       (err) => {
+         this.logging = false;
+       }
+     );*/
 
 
   }
