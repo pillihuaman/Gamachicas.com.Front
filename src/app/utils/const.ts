@@ -32,7 +32,7 @@ export class Const {
 
   public loadEntidadConfig() {
     return this.http
-      .get('./assets/config/entidad-web.config.json')
+      .get('./assets/config/pillihuaman-web.config.json')
       .toPromise()
       .then((config: any) => {
         Const.USERNAME_SEGURIDAD = config.client_id;

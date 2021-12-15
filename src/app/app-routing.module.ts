@@ -1,23 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/interceptors';
+import { NotauthGuard } from './core/interceptors/notauth.guard';
 //import { NotauthGuard } from './@data/interceptors/notauth.guard';
 
 const routes: Routes = [
 
   {
-    path: '',
+    path: 'home',
     loadChildren: () => import('./@presentation/home/home.module').then((m) => m.HomeModule),
-    //canActivate: [NotauthGuard],
-    //canLoad: [NotauthGuard]
 
   },
-  {
-    path: 'corporation',
-    loadChildren: () => import('../app/corporations/corporations.module').then((m) => m.CorporationsModule),
-    //canActivate: [NotauthGuard],
-    //canLoad: [NotauthGuard]
 
-  }
+  {
+    path: 'pages',
+    loadChildren: () => import('./@presentation/pages/page.module').then((m) => m.PageModule),
+    //canActivate: [NotauthGuard],
+
+
+  },
+
+
+  {
+    path: 'aut',
+    loadChildren: () => import('./@presentation/auth/auth.module').then((m) => m.AuthModule),
+    //canActivate: [NotauthGuard],
+  },
 
 ];
 

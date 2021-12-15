@@ -4,8 +4,7 @@ import { Observable, timer } from 'rxjs';
 import { User } from '../app/@data/model/User/user';
 @Component({
   selector: 'serv-pillihuaman-app',
-  template: `<router-outlet></router-outlet>
-  `,
+  template: `<router-outlet></router-outlet>`,
 
 })
 export class AppComponent implements OnInit {

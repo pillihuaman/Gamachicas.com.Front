@@ -1,12 +1,4 @@
 {
-    "public_base_url_maestra": "http://10.240.132.31:8080/maestra/api/public/",
-    "public_base_url_persona": "http://10.240.132.31:8080/persona/api/public/",
-    "public_base_url_seguridad": "http://10.240.132.31:8080/seguridad/api/public/",
-    "public_base_url_entidad": "http://10.240.132.34:8080/entidad/api/public/",
-    "public_base_url_convocatoria": "http://10.240.132.34:8082/convocatoria/api/public/",
-    "public_base_url_postulante": "http://10.240.132.34:8085/postulante/api/public/",
-    "public_base_url_difusion": "http://10.240.132.34:8087/difusion/api/public/",
-    "public_base_url_file_server": "http://10.240.132.49:9095/app/img/",
-    "public_base_url_evaluacion": "http://10.240.132.34:8083//evaluacion/api/public/",
-    "public_base_url_seleccion": "http://10.240.132.34:8084/seleccion/api/public/"
+    "public_base_url_seguridad": "http://localhost:8088/"
 }
+ 

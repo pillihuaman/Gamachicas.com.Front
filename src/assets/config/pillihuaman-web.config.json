@@ -1,6 +1,6 @@
 {
-  "client_id": "e6124b33-c304-4ab3-be71-e97bfc18599f",
-  "client_secret": "cd9bbaf5-4abe-483d-b8f7-3cb789c52fef",
+  "client_id": "admin",
+  "client_secret": "123456",
   "aplicacion_id": 5,
   "roles": {
     "admin_servir": 24,

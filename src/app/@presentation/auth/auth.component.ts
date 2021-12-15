@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserRepository } from 'src/app/@domain/repository/User.Repository';
-
-
-//import { AuthenticationService } from 'src/app/@data/service/authentication.service';
+import { UserRepository } from 'src/app/@domain/repository/userRepository';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-auth',
+  templateUrl: './auth.component.html',
+  styleUrls: ['./auth.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class AuthComponent implements OnInit {
+
   appName: string = "Gamachicas.com";
   logging: boolean = false;
   loginForm: FormGroup = this.formBuilder.group({
@@ -19,26 +18,19 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private formBuilder: FormBuilder, private userRepository: UserRepository) { }
-
   ngOnInit(): void { }
-
   login() {
-
     let user = this.loginForm.get("user")?.value;
     let passwor = this.loginForm.get("password")?.value;
-
     this.logging = true;
-
-    /* this.autenticateService.login(user, passwor).subscribe(
-       (res) => {
-         this.logging = false;
- 
- 
-       },
-       (err) => {
-         this.logging = false;
-       }
-     );*/
+    this.userRepository.login(user, passwor).subscribe(
+      (res) => {
+        this.logging = false;
+      },
+      (err) => {
+        this.logging = false;
+      }
+    );
 
 
   }

@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -27,15 +27,15 @@ import { HomeModule } from './@presentation/home/home.module'
 import { MatIconModule } from '@angular/material/icon';
 import { EmpresaComponent } from './@presentation/pages/empresa/empresa.component';
 import { PageModule } from './@presentation/pages/page.module';
-import { CorporationsComponent } from './corporations/corporations.component';
-import { HttpClientModule } from '@angular/common/http';
+;
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DomainModule } from './@domain/repository/domain.module';
+import { Const } from './utils/const';
+import { MyHttpInterceptor } from './core/interceptors/request.interceptor';
+import { AuthModule } from './@presentation/auth/auth.module';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    EmpresaComponent,
-    CorporationsComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -54,12 +54,42 @@ import { DomainModule } from './@domain/repository/domain.module';
     DomainModule.forRoot(),
     NbButtonModule,
     NbInputModule,
-    CommonComponentModule, MatAutocompleteModule, MatSelectModule, MatFormFieldModule, HomeModule, MatIconModule, PageModule, HttpClientModule
+    CommonComponentModule, MatAutocompleteModule, MatSelectModule, MatFormFieldModule, HomeModule, MatIconModule, PageModule, HttpClientModule, AuthModule
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initCommonConfig,
+      deps: [Const],
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initEntidadConfig,
+      deps: [Const],
+      multi: true,
+    }, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyHttpInterceptor,
+      multi: true,
+    },
+
+
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 
 })
 export class AppModule { }
+export function tokenGetter() {
+  return sessionStorage.getItem('token');
+}
+
+export function initCommonConfig(c: Const) {
+  return () => c.loadCommonConfig();
+}
+
+export function initEntidadConfig(c: Const) {
+  return () => c.loadEntidadConfig();
+}

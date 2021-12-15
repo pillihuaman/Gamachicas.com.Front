@@ -1,8 +1,8 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomainRoutingModule } from './domain-routing.module';
-import { UserRepository } from './User.Repository';
-import { UserService } from 'src/app/@data/service/user.service';
+import { UserRepository } from './userRepository';
+import { UserService } from 'src/app/@data/service/user.Service';
 import { throwIfAlreadyLoaded } from './module-import-guard';
 const DATA_SERVICES = [
   {
