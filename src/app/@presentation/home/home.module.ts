@@ -19,10 +19,9 @@ import {
   NbRadioModule,
   NbSelectModule,
   NbSidebarModule,
-  NbToggleModule
+  NbToggleModule,
 } from '@nebular/theme';
 import { CommonComponentModule } from '../@common-components/common-component.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,10 +30,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-
-  ],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
@@ -54,9 +50,10 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     NbSidebarModule,
     NbToggleModule,
     CommonComponentModule,
-    FormsModule,
-    ReactiveFormsModule, MatInputModule, MatSelectModule, MatFormFieldModule, MatAutocompleteModule
+    MatInputModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatAutocompleteModule,
   ],
-
 })
-export class HomeModule { }
+export class HomeModule {}

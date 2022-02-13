@@ -1,5 +1,13 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { ErrorInterceptor } from './core/interceptors/error.interceptor';
+import { BasicAuthInterceptor } from './core/interceptors/basic-auth.interceptor';
+import { ApiService } from './@data/services/api.service';
+import {
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+  APP_INITIALIZER,
+  LOCALE_ID,
+} from '@angular/core';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +18,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
-
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import {
   NbDatepickerModule,
@@ -20,20 +27,20 @@ import {
   NbLayoutModule,
   NbThemeModule,
   NbToastrModule,
-  NbWindowModule, NbInputModule, NbButtonModule
+  NbWindowModule,
+  NbInputModule,
+  NbButtonModule,
 } from '@nebular/theme';
 import { CommonComponentModule } from './@presentation/@common-components/common-component.module';
-import { HomeModule } from './@presentation/home/home.module'
+import { HomeModule } from './@presentation/home/home.module';
 import { MatIconModule } from '@angular/material/icon';
-import { EmpresaComponent } from './@presentation/pages/empresa/empresa.component';
 import { PageModule } from './@presentation/pages/page.module';
-;
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DomainModule } from './@domain/repository/domain.module';
 import { Const } from './utils/const';
 import { MyHttpInterceptor } from './core/interceptors/request.interceptor';
 import { AuthModule } from './@presentation/auth/auth.module';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -54,8 +61,17 @@ import { AuthModule } from './@presentation/auth/auth.module';
     DomainModule.forRoot(),
     NbButtonModule,
     NbInputModule,
-    CommonComponentModule, MatAutocompleteModule, MatSelectModule, MatFormFieldModule, HomeModule, MatIconModule, PageModule, HttpClientModule, AuthModule
-
+    CommonComponentModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    HomeModule,
+    MatIconModule,
+    PageModule,
+    HttpClientModule,
+    AuthModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
@@ -69,19 +85,31 @@ import { AuthModule } from './@presentation/auth/auth.module';
       useFactory: initEntidadConfig,
       deps: [Const],
       multi: true,
-    }, {
+    },
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: MyHttpInterceptor,
       multi: true,
     },
+    { provide: LOCALE_ID, useValue: 'es-ES' },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BasicAuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true,
+    },
 
-
+    ApiService,
+    Title,
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
-
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
+export class AppModule {}
 export function tokenGetter() {
   return sessionStorage.getItem('token');
 }

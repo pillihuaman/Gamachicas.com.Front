@@ -5,16 +5,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class Const {
-
-
   public static USERNAME_SEGURIDAD: string;
   public static PASSWORD_SEGURIDAD: string;
   public static ACCEPT_COOKIE: string;
   public static API_SEGURIDAD: string;
+  static API_PROCESS: any;
+  static URL_TYPE_ACCESS: any;
   constructor(private http: HttpClient) {
     Const.ACCEPT_COOKIE = 'ACCEPT_COOKIE';
   }
-
 
   public loadCommonConfig() {
     return this.http
@@ -22,13 +21,11 @@ export class Const {
       .toPromise()
       .then((config: any) => {
         Const.API_SEGURIDAD = config.public_base_url_seguridad;
-
       })
       .catch((err: any) => {
         console.error(err);
       });
   }
-
 
   public loadEntidadConfig() {
     return this.http
@@ -43,4 +40,3 @@ export class Const {
       });
   }
 }
-

@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { EmpresaComponent } from './empresa/empresa.component';
 import { PageComponent } from './page.component';
-import { ProductDetailComponent } from './products/product-detail/product-detail.component';
-import { ProductsComponent } from './products/products.component';
-import { UserRegisterComponent } from './user-register/user-register.component';
 
 const routes: Routes = [
   {
@@ -13,36 +9,16 @@ const routes: Routes = [
   },
   {
     path: 'product',
-    children: [
-      {
-        path: 'register-product',
-        component: ProductsComponent
-      },
-      {
-        path: 'product-detail',
-        component: ProductDetailComponent
-      },
-
-
-    ]
+    children: [],
   },
   {
     path: 'user',
-    children: [
-      {
-        path: 'register-user',
-        component: UserRegisterComponent
-      }
-
-
-
-    ]
-  }
-
+    children: [],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PageRoutingModule { }
+export class PageRoutingModule {}
