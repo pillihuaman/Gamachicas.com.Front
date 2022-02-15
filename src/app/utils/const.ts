@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -40,3 +40,13 @@ export class Const {
       });
   }
 }
+
+export const CREDENCIALES = btoa(
+  Const.USERNAME_SEGURIDAD + ':' + Const.PASSWORD_SEGURIDAD
+);
+
+// Variable para la cabecera de una solicitud de token
+export const HTTP_HEADERS_TOKEN = new HttpHeaders({
+  'Content-Type': 'application/x-www-form-urlencoded',
+  Authorization: 'Basic ' + CREDENCIALES,
+});

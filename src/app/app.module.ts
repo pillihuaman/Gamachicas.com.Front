@@ -1,5 +1,3 @@
-import { ErrorInterceptor } from './core/interceptors/error.interceptor';
-import { BasicAuthInterceptor } from './core/interceptors/basic-auth.interceptor';
 import { ApiService } from './@data/services/api.service';
 import {
   NgModule,
@@ -38,9 +36,9 @@ import { PageModule } from './@presentation/pages/page.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DomainModule } from './@domain/repository/domain.module';
 import { Const } from './utils/const';
-import { MyHttpInterceptor } from './core/interceptors/request.interceptor';
 import { AuthModule } from './@presentation/auth/auth.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BasicAuthInterceptor, ErrorInterceptor } from './@data/interceptors';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -86,11 +84,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       deps: [Const],
       multi: true,
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: MyHttpInterceptor,
-      multi: true,
-    },
+
     { provide: LOCALE_ID, useValue: 'es-ES' },
     {
       provide: HTTP_INTERCEPTORS,

@@ -1,20 +1,28 @@
 <form [formGroup]="loginForm">
     <div class="container">
-        <div class="row form">
+        <div class="row flex-container">
             <div class="col-12 col-sm-6">
                 <label for="name" class="form-label">Name *</label>
                 <input type="text" nbInput fullWidth status="basic" placeholder="Name" formControlName="name">
+
             </div>
             <div class="col-12 col-sm-6">
                 <label for="lastName" class="form-label">Last Name </label>
                 <input type="text" nbInput fullWidth status="basic" placeholder="Last Name" formControlName="lastName">
             </div>
 
-            <div class="col-12 col-sm-2"></div>
             <div class="col-12 col-sm-6">
                 <label for="documentoNumber" class="form-label">Document Identifier *</label>
-                <input type="text" nbInput fullWidth status="basic" placeholder="Document Identifier"
-                    formControlName="documentoNumber">
+                <div class="typeCasrs">
+                    <nb-select placeholder="Document Type" [(ngModel)]="selectedItemType"
+                        formControlName="documentoNumber">
+                        <nb-option value="1">DNI</nb-option>
+                        <nb-option value="2">Passport</nb-option>
+                        <nb-option value="3">Local Document</nb-option>
+                        <nb-option value="4">Driver Car</nb-option>
+                    </nb-select>
+                </div>
+
             </div>
             <div class="col-12 col-sm-4">
                 <label for="email" class="form-label">Email * </label>
@@ -22,7 +30,7 @@
             </div>
             <div class="col-12 col-sm-2"></div>
 
-            <div class="col-12 col-sm-4">
+            <div class="col-12 col-sm-6">
                 <label for="mobilPhone" class="form-label">Mobil Phone </label>
                 <input type="text" nbInput fullWidth status="basic" placeholder="Mobil Phone"
                     formControlName="mobilPhone">

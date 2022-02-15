@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   });
   hasError: boolean;
   private unsubscribe: Subscription[] = []; // Read more: => https://brianflove.com/2016/12/11/anguar-2-unsubscribe-observables/
-  returnUrl: string;
+  returnUrl: string = '/home';
 
   constructor(
     private sidebarService: NbSidebarService,

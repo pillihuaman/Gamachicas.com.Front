@@ -1,8 +1,8 @@
 import { ModalRepository } from 'src/app/@domain/repository/repository/modal.repository ';
-import { Const } from './../../utils/const';
+import { Const, HTTP_HEADERS_TOKEN } from './../../utils/const';
 import { catchError, map, timeout } from 'rxjs/operators';
 import { User } from './../../@domain/repository/models/user';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
@@ -66,7 +66,7 @@ export class AuthenticationService extends AuthenticationRepository {
     const userName = Const.USERNAME_SEGURIDAD;
     const password = Const.PASSWORD_SEGURIDAD;
 
-    //let headers = new HttpHeaders();
+    let headers = new HttpHeaders();
     let body: any = {
       username: userName,
       password: password,
@@ -82,39 +82,35 @@ export class AuthenticationService extends AuthenticationRepository {
       'text/json',
       'application/_*+json',
     ];
-    // headers = headers.set('Accept', httpHeaderAccepts);
-    //headers = headers.set('Content-Type', consumes);
-    //headers = headers.set('username', login);
-    //headers = headers.set('password', clave);
-
-    const header = new HttpHeaders({
-      Authorization: `Basic ${btoa(
-        unescape(encodeURIComponent(login + ':' + clave))
-      )}`,
-    });
-
+    let auto = null;
+    headers = headers.set('Accept', httpHeaderAccepts);
+    headers = headers.set('Content-Type', consumes);
+    headers = headers.set('username', login);
+    headers = headers.set('password', clave);
     const url = `${Const.API_SEGURIDAD}/authenticate`;
-    return this.http
-      .post<any>(url, body, { headers: header, observe: 'response' })
-      .pipe(
-        timeout(2000),
-        map((response: any) => {
-          const usuario = response.userName;
-          localStorage.setItem('currentUser', usuario);
-          this.currentUserSubject.next({
-            token: response.token,
-          });
-          localStorage.setItem('token', response.token);
+    const params = new URLSearchParams();
+    params.set('grant_type', 'password');
+    params.set('username', login);
+    params.set('password', clave);
 
-          return response;
-        }),
-        catchError((e) => {
-          let nbComponentStatus: NbComponentStatus = 'danger';
-          // this.router.navigate(['/auth/']);
-          //this.modalRepository.open(true);
-          this.modalRepository.showToast(nbComponentStatus, e.message);
-          throw e;
-        })
-      );
+    return this.http.post<any>(url, body, { headers: headers }).pipe(
+      // timeout(2000),
+      map((response: any) => {
+        const usuario = response.userName;
+        localStorage.setItem('currentUser', usuario);
+        this.currentUserSubject.next({
+          token: response.token,
+        });
+        localStorage.setItem('token', response.token);
+
+        return response;
+      }),
+      catchError((e) => {
+        let nbComponentStatus: NbComponentStatus = 'danger';
+        this.router.navigate(['/auth/login']);
+        this.modalRepository.showToast(nbComponentStatus, e.message);
+        throw e;
+      })
+    );
   }
 }

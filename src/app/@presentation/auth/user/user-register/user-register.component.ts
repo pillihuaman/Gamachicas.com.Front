@@ -9,6 +9,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 })
 export class UserRegisterComponent implements OnInit {
   loginForm: FormGroup;
+  selectedItemType: any;
   user: User;
   selectedItem: any;
   constructor(private formBuilder: FormBuilder) {}
