@@ -33,10 +33,13 @@ export class AuthenticationService extends AuthenticationRepository {
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('usuario')!)
     );
+
     this.currentUser = this.currentUserSubject.asObservable();
+    console.log(this.currentUser);
   }
 
   public get getCurrentUserValue(): User {
+    console.log(this.currentUserSubject.value);
     return this.currentUserSubject.value;
   }
 
@@ -93,15 +96,15 @@ export class AuthenticationService extends AuthenticationRepository {
     params.set('username', login);
     params.set('password', clave);
 
-    return this.http.post<any>(url, body, { headers: headers }).pipe(
+    return this.http.post<User>(url, body, { headers: headers }).pipe(
       // timeout(2000),
-      map((response: any) => {
-        const usuario = response.userName;
-        localStorage.setItem('currentUser', usuario);
+      map((response: User) => {
+        const usuario = response as User;
+        localStorage.setItem('usuario', JSON.stringify(usuario));
         this.currentUserSubject.next({
           token: response.token,
         });
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('token', response.token + '');
 
         return response;
       }),

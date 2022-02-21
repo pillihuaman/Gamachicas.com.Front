@@ -11,8 +11,8 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomainRoutingModule } from './domain-routing.module';
-import { UserRepository } from './userRepository';
 import { throwIfAlreadyLoaded } from './module-import-guard';
+import { UserRepository } from './repository/user.repository';
 const DATA_SERVICES = [
   {
     provide: UserRepository,
@@ -21,6 +21,10 @@ const DATA_SERVICES = [
   {
     provide: AuthenticationRepository,
     useClass: AuthenticationService,
+  },
+  {
+    provide: ModalRepository,
+    useClass: ModalService,
   },
   {
     provide: ModalRepository,

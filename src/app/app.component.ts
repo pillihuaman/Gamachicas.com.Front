@@ -5,22 +5,30 @@ import { User } from '../app/@data/model/User/user';
 @Component({
   selector: 'serv-pillihuaman-app',
   template: `<router-outlet></router-outlet>`,
-
 })
 export class AppComponent implements OnInit {
-  nombreEmpresa = "Pillihuman Corporation app"
+  nombreEmpresa = 'Pillihuman Corporation app';
   estado: boolean = true;
   cantidadUsuario: number = 3;
   user: User;
   listaUsuario: Array<User> = [];
   everySecond$: Observable<number> = timer(0, 100);
-  AppComponent() { }
-  constructor(private sidebarService: NbSidebarService, private nbthemeservice: NbThemeService,) {
-  }
+  AppComponent() {}
+  constructor(
+    private sidebarService: NbSidebarService,
+    private nbthemeservice: NbThemeService
+  ) {}
 
   ngOnInit() {
-    this.nombreEmpresa = "Gamachicas.com";
-    this.user = { name: 'zarmir', lastName: 'pillihuaman', code: 1, estatus: false, password: '', documentoNumber: '46178209' };
+    this.nombreEmpresa = 'Gamachicas.com';
+    this.user = {
+      name: 'zarmir',
+      lastName: 'pillihuaman',
+      code: 1,
+      estatus: false,
+      password: '',
+      documentoNumber: '46178209',
+    };
     this.listaUsuario.push(this.user);
     console.log(this.listaUsuario);
     if (this.cantidadUsuario !== 1) {
@@ -35,6 +43,5 @@ export class AppComponent implements OnInit {
 
   toggleout() {
     this.sidebarService.collapse('menu-barapp');
-
   }
 }

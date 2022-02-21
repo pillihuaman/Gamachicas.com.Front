@@ -1,3 +1,4 @@
+import { MatDialog } from '@angular/material/dialog';
 import { catchError } from 'rxjs/operators';
 import { throwError, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -6,6 +7,8 @@ import {
   HttpErrorResponse,
   HttpHeaders,
 } from '@angular/common/http';
+import { ModalComponent } from 'src/app/@presentation/@common-components/modal/modal.component';
+import { GeneralConstans } from 'src/app/utils/generalConstant';
 
 @Injectable()
 export class ApiService {
@@ -14,7 +17,7 @@ export class ApiService {
       'Content-Type': 'application/json',
     }),
   };
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, public dialog: MatDialog) {}
 
   requestFilter(request: any): string {
     let api = '';
@@ -76,6 +79,9 @@ export class ApiService {
 
   post(path: string, body: any): Observable<any> {
     //
+    this.dialog.open(ModalComponent, {
+      data: GeneralConstans.lazyLoadmodel,
+    });
     return this.http.post(path, body).pipe(
       catchError((error) => {
         //mensje

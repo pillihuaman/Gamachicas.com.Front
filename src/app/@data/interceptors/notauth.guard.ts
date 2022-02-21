@@ -17,9 +17,9 @@ export class NotauthGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const currentUser = this.authenticationService.getCurrentUserValue;
     if (currentUser) {
-      this.router.navigate(['/pages/']);
       return false;
     } else {
+      //this.router.navigate(['/auth/login/']);
       return true;
     }
   }

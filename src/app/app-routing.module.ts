@@ -24,7 +24,7 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./@presentation/auth/auth.module').then((m) => m.AuthModule),
-    canActivate: [NotauthGuard],
+    //canActivate: [NotauthGuard],
   },
 ];
 

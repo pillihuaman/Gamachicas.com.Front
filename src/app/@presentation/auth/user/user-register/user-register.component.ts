@@ -1,6 +1,13 @@
+import { GeneralConstans } from './../../../../utils/generalConstant';
+import { NbComponentStatus, NbDialogService } from '@nebular/theme';
 import { User } from 'src/app/@data/model/User/user';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UserRepository } from 'src/app/@domain/repository/repository/user.repository';
+import { ModalRepository } from 'src/app/@domain/repository/repository/modal.repository ';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from 'src/app/@presentation/@common-components/modal/modal.component';
+import { ModalModel } from 'src/app/@data/model/User/modalModel';
 
 @Component({
   selector: 'app-user-register',
@@ -12,7 +19,18 @@ export class UserRegisterComponent implements OnInit {
   selectedItemType: any;
   user: User;
   selectedItem: any;
-  constructor(private formBuilder: FormBuilder) {}
+  consoles: String = 'exit';
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private userRepository: UserRepository,
+    private modalRepository: ModalRepository,
+    private dialogService: NbDialogService,
+    public dialog: MatDialog
+  ) {}
+  get f() {
+    return this.loginForm.controls;
+  }
 
   ngOnInit(): void {
     this.initForm();
@@ -28,14 +46,7 @@ export class UserRegisterComponent implements OnInit {
           Validators.maxLength(50),
         ],
       ],
-      lastName: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(50),
-        ],
-      ],
+      lastName: [''],
       password: [
         '',
         [
@@ -49,11 +60,42 @@ export class UserRegisterComponent implements OnInit {
         '',
         [
           Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(50),
+        ],
+      ],
+      repeatpassword: [
+        '',
+        [
+          Validators.required,
           Validators.minLength(3),
           Validators.maxLength(50),
         ],
       ],
-      mobilPhone: [''],
+      phoneNumber: [''],
     });
+  }
+  submit() {
+    let data: User = {
+      name: this.f.name.value,
+      lastName: this.f.lastName.value,
+      password: this.f.password.value,
+      documentoNumber: this.f.documentoNumber.value,
+      email: this.f.email.value,
+      phoneNumber: this.f.phoneNumber.value,
+    };
+
+    this.userRepository.registerUser(data).subscribe(
+      (value) => {
+        this.dialog.open(ModalComponent, {
+          data: GeneralConstans.datamodelSucess,
+        });
+      },
+      (error) => {
+        this.dialog.open(ModalComponent, {
+          data: GeneralConstans.datamodelError,
+        });
+      }
+    );
   }
 }

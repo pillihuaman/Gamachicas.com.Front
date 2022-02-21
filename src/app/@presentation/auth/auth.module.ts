@@ -11,6 +11,7 @@ import {
   NbCardModule,
   NbContextMenuModule,
   NbDatepickerModule,
+  NbDialogModule,
   NbFormFieldModule,
   NbIconModule,
   NbInputModule,

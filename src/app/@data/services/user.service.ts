@@ -26,6 +26,6 @@ export class UserService extends UserRepository {
       `${Const.API_PROCESS}` +
       `/${Const.URL_TYPE_ACCESS}` +
       `/v1/user/register`;
-    return this.apiService.post(url, User);
+    return this.apiService.post(url, user);
   }
 }

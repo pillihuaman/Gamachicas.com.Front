@@ -1,3 +1,5 @@
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
@@ -15,6 +17,7 @@ import {
   NbThemeModule,
   NbMenuModule,
   NbContextMenuModule,
+  NbDialogModule,
 } from '@nebular/theme';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
@@ -33,10 +36,14 @@ import { ServPillihuamanHeaderHomeComponent } from './serv-pillihuaman-header-ho
 import { ServPillihuamanSidebarHomeComponent } from './serv-pillihuaman-sidebar-home/serv-pillihuaman-sidebar-home.component';
 import { ServPillihuamanLeftMenuComponent } from './serv-pillihuaman-left-menu/serv-pillihuaman-left-menu.component';
 import { RouterModule } from '@angular/router';
+import { ModalComponent } from './modal/modal.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 const COMPONENTS = [
   ServPillihuamanHeaderHomeComponent,
   ServPillihuamanSidebarHomeComponent,
   ServPillihuamanLeftMenuComponent,
+  ModalComponent,
 ];
 /*const DIRECTIVES = [
 
@@ -78,6 +85,8 @@ const materialModules = [MatIconModule];
     NbContextMenuModule,
     MatIconModule,
     RouterModule,
+    NbCardModule,
+    MatProgressSpinnerModule,
   ],
   exports: [...COMPONENTS, ...materialModules],
   entryComponents: [...COMPONENTS],

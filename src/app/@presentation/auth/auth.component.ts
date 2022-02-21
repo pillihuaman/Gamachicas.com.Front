@@ -2,7 +2,6 @@ import { NbSidebarService, NbThemeService } from '@nebular/theme';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserRepository } from 'src/app/@domain/repository/userRepository';
 
 @Component({
   selector: 'app-auth',

@@ -1,3 +1,6 @@
+import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { MyHttpInterceptor } from './@data/interceptors/request.interceptor';
 import { ApiService } from './@data/services/api.service';
 import {
   NgModule,
@@ -39,6 +42,8 @@ import { Const } from './utils/const';
 import { AuthModule } from './@presentation/auth/auth.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BasicAuthInterceptor, ErrorInterceptor } from './@data/interceptors';
+import { MatDialogModule } from '@angular/material/dialog';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -70,6 +75,14 @@ import { BasicAuthInterceptor, ErrorInterceptor } from './@data/interceptors';
     AuthModule,
     FormsModule,
     ReactiveFormsModule,
+    NbDialogModule.forRoot(),
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatButtonModule,
+    FormsModule,
+    MatTableModule,
+    MatDialogModule,
   ],
   providers: [
     {
@@ -94,6 +107,11 @@ import { BasicAuthInterceptor, ErrorInterceptor } from './@data/interceptors';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MyHttpInterceptor,
       multi: true,
     },
 
