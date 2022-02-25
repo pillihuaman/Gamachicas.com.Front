@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
       code: 1,
       estatus: false,
       password: '',
-      documentoNumber: '46178209',
+      numTypeDocument: '46178209',
     };
     this.listaUsuario.push(this.user);
     console.log(this.listaUsuario);

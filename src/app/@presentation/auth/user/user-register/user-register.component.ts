@@ -55,7 +55,8 @@ export class UserRegisterComponent implements OnInit {
           Validators.maxLength(50),
         ],
       ],
-      documentoNumber: [''],
+      numTypeDocument: [''],
+      typeDocument: [''],
       email: [
         '',
         [
@@ -80,9 +81,11 @@ export class UserRegisterComponent implements OnInit {
       name: this.f.name.value,
       lastName: this.f.lastName.value,
       password: this.f.password.value,
-      documentoNumber: this.f.documentoNumber.value,
-      email: this.f.email.value,
+      numTypeDocument: this.f.numTypeDocument.value,
+      mail: this.f.email.value,
       phoneNumber: this.f.phoneNumber.value,
+      username: this.f.name.value,
+      typeDocument: this.f.typeDocument.value,
     };
 
     this.userRepository.registerUser(data).subscribe(

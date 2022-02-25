@@ -23,10 +23,10 @@
             </div>
 
             <div class="col-12 col-sm-6">
-                <label for="documentoNumber" class="form-label">Document Identifier *</label>
+                <label for="typeDocument" class="form-label">Document Identifier *</label>
                 <div class="typeCasrs">
                     <nb-select placeholder="Document Type" [(ngModel)]="selectedItemType"
-                        formControlName="documentoNumber">
+                        formControlName="typeDocument">
                         <nb-option value="1">DNI</nb-option>
                         <nb-option value="2">Passport</nb-option>
                         <nb-option value="3">Local Document</nb-option>
@@ -35,21 +35,13 @@
                 </div>
 
             </div>
-            <div class="col-12 col-sm-4">
-                <label for="email" class="form-label">Email * </label>
-                <input type="text" nbInput fullWidth status="basic" placeholder="Email" formControlName="email">
-                <div *ngIf="f.email.invalid && f.email.touched" class="invalid-text">
-                    <span *ngIf="f.email.errors?.required">
-                        The fiel is required
-                    </span>
-                    <span *ngIf="f.email.errors?.minlength">
-                        The text lenth is pluss 50
-                    </span>
-                    <span *ngIf="f.email.errors?.maxlength">
-                        The text lenth is less 6
-                    </span>
-                </div>
+
+            <div class="col-12 col-sm-2">
+                <label for="email" class="form-label">Number Type Document </label>
+                <input type="text" nbInput fullWidth status="basic" placeholder="Document type number"
+                    formControlName="numTypeDocument">
             </div>
+
             <div class="col-12 col-sm-2"></div>
 
             <div class="col-12 col-sm-4">
@@ -85,12 +77,28 @@
                     </span>
                 </div>
             </div>
-            <div class="col-12 col-sm-2"></div>
             <div class="col-12 col-sm-4">
                 <label for="phoneNumber" class="form-label">Mobil Phone </label>
                 <input type="text" nbInput fullWidth status="basic" placeholder="Mobil Phone"
                     formControlName="phoneNumber">
             </div>
+            <div class="col-12 col-sm-2"></div>
+            <div class="col-12 col-sm-4">
+                <label for="email" class="form-label">Email * </label>
+                <input type="text" nbInput fullWidth status="basic" placeholder="Email" formControlName="email">
+                <div *ngIf="f.email.invalid && f.email.touched" class="invalid-text">
+                    <span *ngIf="f.email.errors?.required">
+                        The fiel is required
+                    </span>
+                    <span *ngIf="f.email.errors?.minlength">
+                        The text lenth is pluss 50
+                    </span>
+                    <span *ngIf="f.email.errors?.maxlength">
+                        The text lenth is less 6
+                    </span>
+                </div>
+            </div>
+
 
         </div>
         <div class="btntype">
@@ -100,8 +108,3 @@
         </div>
     </div>
 </form>
-
-<div class="btntype">
-    <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
-
-</div>
